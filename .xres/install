@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+XRES=$HOME/.xres
+THEMELINK=$XRES/color/default
+CACHEDIR=$XRES/.cache
+
+# rm $THEMELINK 2>/dev/null || true
+ln -sfr $1 $THEMELINK
+
+INCLUDEFILE=$HOME/include/xres.h
+
+{
+	mkdir $CACHEDIR || rm $CACHEDIR/* || true
+	rm $INCLUDEFILE 2>/dev/null || true
+} 2>/dev/null
+
+while read line; do
+	key=`echo $line|sed 's/^\*\.*\([^:]\+\):.*/\1/'`
+	val=`echo $line|sed 's/.*:[[:space:]]\+//'`
+	echo $val > "$CACHEDIR/$key"
+	echo "#define XRES_$key \"$val\"" >> "$INCLUDEFILE"
+done <<< "`cat $XRES/main $THEMELINK | grep "^\*"`"

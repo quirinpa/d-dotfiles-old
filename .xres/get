@@ -1,0 +1,6 @@
+#! /bin/sh
+get_xres() {
+	cat $HOME/.xres/.cache/$1
+}
+
+export get_xres

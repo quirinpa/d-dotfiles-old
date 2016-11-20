@@ -1,0 +1,13 @@
+XTerm*decTerminalID: vt340
+XTerm*sixelScrolling: true
+XTerm*regisScreenSize: 1024x768
+XTerm*numColorRegisters: 256
+
+*.font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+*.boldFont: -*-fixed-bold-r-*-*-14-*-*-*-*-*-*-*
+
+URxvt.saveLines: 0
+urxvt*secondaryScreen: false
+URxvt.letterSpace: 1
+URxvt.lineSpace: 1
+URxvt.internalBorder: 0
