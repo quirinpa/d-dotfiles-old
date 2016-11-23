@@ -1,0 +1,23 @@
+#!/bin/ksh
+set -e
+
+ln -s $PWD/.vimrc ~
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+ln -s $PWD/.vim/ftplugin $PWD/.vim/colors ~/.vim
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+cd ~/.vim/bundle
+
+iplug(){ 
+	git clone git://github.com/$1 
+}
+
+iplug 'tpope/vim-unimpaired'
+iplug 'tpope/vim-surround'
+iplug 'tpope/vim-fugitive'
+iplug 'tpope/vim-commentary'
+iplug 'tpope/vim-vinegar'
+iplug 'tpope/vim-dispatch'
+iplug 'airblade/vim-gitgutter'
+
+cd -
